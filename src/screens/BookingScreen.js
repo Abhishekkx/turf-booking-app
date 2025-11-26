@@ -153,10 +153,10 @@ const BookingScreen = ({ route, navigation }) => {
   };
 
   const calculateTotal = () => {
-    return turf.pricePerHour;
+    return turf.pricePerPlayer * playerCount;
   };
 
-  const isNextEnabled = selectedDate && selectedSlot && selectedCourt;
+  const isNextEnabled = selectedDate && selectedPeriod && selectedCourt;
 
   const handleNext = async () => {
     if (!isNextEnabled) return;
@@ -165,11 +165,12 @@ const BookingScreen = ({ route, navigation }) => {
       turfName: turf.name,
       date: selectedDate.fullDate,
       dateDisplay: `${selectedDate.day} ${selectedDate.month}`,
-      slot: selectedSlot.time,
+      slot: timeSlots[selectedPeriod]?.timeRange || 'N/A',
       period: selectedPeriod,
       court: selectedCourt.name,
       playerCount,
       pricePerHour: turf.pricePerHour,
+      pricePerPlayer: turf.pricePerPlayer,
       totalPrice: calculateTotal(),
     };
 
@@ -469,11 +470,11 @@ const BookingScreen = ({ route, navigation }) => {
         <View style={styles.bottomContent}>
           <View style={styles.priceSection}>
             <View style={styles.priceRow}>
-              <Text style={styles.price}>₹ {turf.pricePerHour}</Text>
-              <Text style={styles.priceSubtext}>₹{turf.pricePerPlayer} per player</Text>
+              <Text style={styles.price}>₹ {calculateTotal()}</Text>
+              <Text style={styles.priceSubtext}>₹{turf.pricePerPlayer} × {playerCount} players</Text>
             </View>
             <TouchableOpacity>
-              <Text style={styles.breakupLink}>View Price Breakup</Text>
+              <Text style={styles.breakupLink}>Total for {playerCount} player{playerCount > 1 ? 's' : ''}</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity
@@ -481,7 +482,7 @@ const BookingScreen = ({ route, navigation }) => {
             onPress={handleNext}
             disabled={!isNextEnabled}
           >
-            <Text style={styles.nextButtonText}>Next →</Text>
+            <Text style={styles.nextButtonText}>Book Now</Text>
           </TouchableOpacity>
         </View>
       </View>

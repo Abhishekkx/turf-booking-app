@@ -93,7 +93,7 @@ const MyBookingsScreen = () => {
           <MoneyIcon size={20} color="#2E7D32" />
           <Text style={styles.priceLabel}>Total Amount</Text>
         </View>
-        <Text style={styles.priceValue}>₹{item.totalPrice}/hour</Text>
+        <Text style={styles.priceValue}>₹{item.totalPrice}</Text>
       </View>
 
       <View style={styles.statusBadge}>
