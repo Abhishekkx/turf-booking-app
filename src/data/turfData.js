@@ -8,10 +8,10 @@ export const turfData = {
   pricePerHour: 1200,
   pricePerPlayer: 240,
   images: [
-    require('../../assets/image - turf.png'),
-    require('../../assets/image - turf2.png'),
+    { uri: 'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=800' },
+    { uri: 'https://images.unsplash.com/photo-1624880357913-a8539238245b?w=800' },
   ],
-  mapPreview: require('../../assets/image - location.png'),
+  mapPreview: { uri: 'https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800' },
   about: "Premium sports facility with state-of-the-art cricket courts. Perfect for casual games and professional practice sessions. Well-maintained grounds with modern amenities.",
   timings: "6:00 AM - 11:00 PM (All Days)",
   amenities: [

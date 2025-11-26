@@ -525,9 +525,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: 40,
   },
-  headerSpacer: {
-    width: 40,
-  },
   viewBookingsButton: {
     width: 40,
     height: 40,
